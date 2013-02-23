@@ -1,0 +1,26 @@
+{
+  "name": "validate",
+  "repo": "segmentio/validate",
+  "description": "Component: a form input validator.",
+  "version": "0.0.1",
+  "keywords": [
+    "validate",
+    "validator",
+    "form"
+  ],
+  "dependencies": {
+    "component/type": "*",
+    "nickjackson/val": "*",
+    "segmentio/is-email": "*",
+    "component/each": "*",
+    "component/batch": "*",
+    "component/tip": "*"
+  },
+  "development": {
+    "component/assert": "*"
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
