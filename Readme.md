@@ -1,6 +1,6 @@
 # validate
 
-  Validate a DOM element.
+  Validate a DOM element, like a text input, against a set of rules.
 
 ## Installation
 
@@ -11,14 +11,14 @@
 ```js
 var validate = require('validate');
 
-var input = document.createElement('input');
-var validator = validate(input)
+validate(document.createElement('input'))
   .on('blur')
   .is('required')
   .is('maximum', 8, 'Maximum 8 characters.')
-  .is(/\w+/i, 'Please only use certain characters...');
-
-validator.validate(); // can also validate manually
+  .is(/\w+/i, 'Please only use certain characters...')
+  .is(function (value, done) {
+    done(value === 'something');
+  });
 ```
 
 ## API
