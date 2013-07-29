@@ -28,6 +28,10 @@ validator.validate(); // can also validate manually
   
   Create a new validator for a given `el`.
 
+### .use(plugin)
+  
+  Use the given `plugin`.
+
 ### .value(fn)
   
   Set the `value` adapter, for retrieving the value of the element being validated. By default it will use `component/value`.
@@ -48,7 +52,7 @@ validator.validate(); // can also validate manually
   
   Validate the element manually.
 
-### #is(fn|string, [value], [message])
+### #is(rule, [value], [message])
   
   Add a validation `rule` (either a function or a shorthand string) with an optional `message` to be displayed when invalid.
 
