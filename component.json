@@ -1,26 +1,25 @@
 {
   "name": "validate",
   "repo": "segmentio/validate",
-  "description": "Component: a form input validator.",
+  "description": "Validate a DOM element.",
   "version": "0.0.1",
-  "keywords": [
-    "validate",
-    "validator",
-    "form"
-  ],
+  "license": "MIT",
+  "keywords": ["validate", "validator", "form", "input", "required", "regexp", "email", "url"],
   "dependencies": {
+    "component/classes": "*",
+    "component/domify": "*",
+    "component/event": "*",
     "component/type": "*",
-    "nickjackson/val": "*",
-    "segmentio/is-email": "*",
-    "component/each": "*",
-    "component/batch": "*",
-    "component/tip": "*"
+    "component/value": "*",
+    "segmentio/is-email": "*"
   },
   "development": {
     "component/assert": "*"
   },
-  "license": "MIT",
   "scripts": [
-    "index.js"
-  ]
+    "lib/adapter.js",
+    "lib/index.js",
+    "lib/validators.js"
+  ],
+  "main": "lib/index.js"
 }

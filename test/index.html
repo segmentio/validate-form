@@ -1,16 +1,15 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="mocha.css" />
-    </head>
-    <body>
-        <div id="mocha"></div>
-        <script src="mocha.js"></script>
-        <script>mocha.setup({
-            ui          : 'qunit',
-            ignoreLeaks : true
-        })</script>
-        <script src="../build/build.js"></script>
-        <script src="tests.js"></script>
-        <script>mocha.run();</script>
-    </body>
+<head>
+  <link rel="stylesheet" href="mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="mocha.js"></script>
+  <script>mocha.setup({ ui: 'bdd'});</script>
+  <script src="../build/build.js"></script>
+  <script src="adapter.js"></script>
+  <script src="validate.js"></script>
+  <script src="validators.js"></script>
+  <script>mocha.run();</script>
+</body>
 </html>
