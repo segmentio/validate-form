@@ -1,4 +1,3 @@
-
 # validate
 
   Validate a DOM element.
