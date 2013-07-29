@@ -27,7 +27,7 @@ describe('#validate', function () {
     var input = document.createElement('input');
     validate.invalid(function () { done(); });
     validate(input).is(function (val, finish) {
-      finish(false);
+      finish(null, false);
     }).validate();
   });
 
@@ -35,8 +35,20 @@ describe('#validate', function () {
     var input = document.createElement('input');
     validate.valid(function () { done(); });
     validate(input).is(function (val, finish) {
-      finish(true);
+      finish(null, true);
     }).validate();
+  });
+
+  it('should break on first invalid', function () {
+    var input = document.createElement('input');
+    var i = 0;
+    var f = function (val, done) { done(false); };
+    validate.invalid(function () { i++; });
+    validate(input)
+      .is(f)
+      .is(f)
+      .validate();
+    assert(1 === i);
   });
 });
 

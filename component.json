@@ -11,7 +11,8 @@
     "component/event": "*",
     "component/type": "*",
     "component/value": "*",
-    "segmentio/is-email": "*"
+    "segmentio/is-email": "*",
+    "visionmedia/batch": "*"
   },
   "development": {
     "component/assert": "*"
