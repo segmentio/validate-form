@@ -31,6 +31,13 @@ describe('regexp', function () {
     validate.valid(function () { done(); });
     validate(input).is(/a/i).validate();
   });
+
+  it('should accept strings', function (done) {
+    var input = document.createElement('input');
+    input.value = 'a';
+    validate.valid(function () { done(); });
+    validate(input).is('regexp', 'a').validate();
+  });
 });
 
 describe('email', function () {
