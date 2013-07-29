@@ -1,6 +1,6 @@
 # validate
 
-  Validate a DOM element.
+  Validate a DOM element, like a text input, against a set of rules.
 
 ## Installation
 
