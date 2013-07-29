@@ -11,8 +11,7 @@
 ```js
 var validate = require('validate');
 
-var input = document.createElement('input');
-var validator = validate(input)
+validate(document.createElement('input'))
   .on('blur')
   .is('required')
   .is('maximum', 8, 'Maximum 8 characters.')
@@ -20,8 +19,6 @@ var validator = validate(input)
   .is(function (value, done) {
     done(value === 'something');
   });
-
-validator.validate(); // can also validate manually
 ```
 
 ## API
