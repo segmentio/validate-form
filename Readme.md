@@ -16,7 +16,10 @@ var validator = validate(input)
   .on('blur')
   .is('required')
   .is('maximum', 8, 'Maximum 8 characters.')
-  .is(/\w+/i, 'Please only use certain characters...');
+  .is(/\w+/i, 'Please only use certain characters...')
+  .is(function (value, done) {
+    done(value === 'something');
+  });
 
 validator.validate(); // can also validate manually
 ```
