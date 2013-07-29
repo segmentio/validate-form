@@ -17,7 +17,7 @@ validate(document.createElement('input'))
   .is('maximum', 8, 'Maximum 8 characters.')
   .is(/\w+/i, 'Please only use certain characters...')
   .is(function (value, done) {
-    done(value === 'something');
+    done(null, value === 'something');
   });
 ```
 
@@ -53,7 +53,7 @@ validate(document.createElement('input'))
 
 ### #is(rule, [value], [message])
   
-  Add a validation `rule` (either a function or a shorthand string) with an optional `message` to be displayed when invalid.
+  Add a validation `rule` (either a function or a shorthand string) with an optional `message` to be displayed when invalid. The `rule` fn should take a `value, done` signature and should call `done(err, valid)`.
 
   Some validation functions are initialized with a `value` (like minimum length).
 
