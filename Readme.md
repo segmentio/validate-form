@@ -1,4 +1,3 @@
-
 # validate
 
   Validate a DOM element.
@@ -48,7 +47,7 @@ validator.validate(); // can also validate manually
   
   Validate the element manually.
 
-### #is(fn|string, [value], [message])
+### #is(rule, [value], [message])
   
   Add a validation `rule` (either a function or a shorthand string) with an optional `message` to be displayed when invalid.
 
