@@ -1,6 +1,6 @@
 # validate
 
-  Validate a DOM element, like a text input, against a set of rules.
+  Validate a DOM element, like a text input, against a set of rules. _Still a little in flux, feedback welcome..._
 
 ## Installation
 
@@ -9,27 +9,44 @@
 ## Example
   
 ```js
-var validate = require('validate');
+var validate = require('validate')
+  , form = document.getElementById('#form');
 
-validate(document.createElement('input'))
-  .on('blur')
-  .is('required')
-  .is('maximum', 8, 'Maximum 8 characters.')
-  .is(/\w+/i, 'Please only use certain characters...')
-  .is(function (value, done) {
-    done(null, value === 'something');
-  });
+validate(form)
+  .field('email')
+    .is('required')
+    .is('email')
+  .field('password')
+    .is('required')
+    .is('minimum', 8, 'Minimum 8 characters.')
+    .is(/\w+/i, 'Please only use certain characters...')
+    .is(function (value, done) {
+      done(null, value !== 'password');
+    }, 'Come on...')
+  .field('password-again')
+    .is('required')
+    .is('equal', 'password');
 ```
 
 ## API
 
 ### validate(el)
   
-  Create a new validator for a given `el`.
+  Create a new validator for a given form `el`.
 
-### .use(plugin)
+### #field(el)
   
-  Use the given `plugin`.
+  Add a field to the validator.
+
+### #is(rule, [value], [message])
+  
+  Add a validation `rule` to the current field (either a function or a shorthand string) with an optional `message` to be displayed when invalid. The `rule` fn should take a `value, done` signature and should call `done(err, valid)`.
+
+  Some validation functions are initialized with a `value` (like minimum length).
+
+### #validate()
+  
+  Validate the form manually.
 
 ### .value(fn)
   
@@ -42,24 +59,6 @@ validate(document.createElement('input'))
 ### .valid(fn)
   
   Set the `valid` adapter, for marking the element as valid. By default, this will remove an `invalid` class and any message elements.
-
-### #value([boolean, [message]])
-
-  Get or set the validity of the element, with an optional `message`.
-
-### #validate()
-  
-  Validate the element manually.
-
-### #is(rule, [value], [message])
-  
-  Add a validation `rule` (either a function or a shorthand string) with an optional `message` to be displayed when invalid. The `rule` fn should take a `value, done` signature and should call `done(err, valid)`.
-
-  Some validation functions are initialized with a `value` (like minimum length).
-
-### #on(event)
-  
-  Automatically validate the element on `event` (blur, keydown, etc.)
 
 ## Shorthands
 

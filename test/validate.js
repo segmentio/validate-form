@@ -1,104 +1,53 @@
 describe('validate', function () {
 
 var assert = require('assert')
-  , validate = require('validate');
+  , domify = require('domify')
+  , validate = require('validate')
+  , Field = validate.Field;
+
+var form = domify('<form action="#submit"><input name="email"></form>')
+  , input = form.querySelector('input');
 
 it('should be a constructor', function () {
   assert('function' === typeof validate);
 });
 
-describe('#valid', function () {
-  it('should get the validity', function () {
-    var input = document.createElement('input');
-    var validator = validate(input);
-    assert(true === validator.valid());
+describe('#field', function () {
+  it('should return a field instance', function () {
+    var field = validate(form).field(input);
+    assert(field instanceof Field);
   });
 
-  it('should set the validity', function () {
-    var input = document.createElement('input');
-    var validator = validate(input);
-    validator.valid(false);
-    assert(false === validator.valid());
+  it('should store the field by name', function () {
+    var validator = validate(form);
+    var field = validator.field(input);
+    assert(field === validator.fields.email);
+  });
+
+  it('should accept a field name', function () {
+    var field = validate(form).field('email');
+    assert(input === field.el);
   });
 });
 
 describe('#validate', function () {
-  it('should call the invalid adapter', function (done) {
-    var input = document.createElement('input');
-    validate.invalid(function () { done(); });
-    validate(input).is(function (val, finish) {
-      finish(null, false);
-    }).validate();
-  });
-
-  it('should call the valid adapter', function (done) {
-    var input = document.createElement('input');
-    validate.valid(function () { done(); });
-    validate(input).is(function (val, finish) {
-      finish(null, true);
-    }).validate();
-  });
-
-  it('should break on first invalid', function () {
-    var input = document.createElement('input');
-    var i = 0;
-    var f = function (val, done) { done(false); };
-    validate.invalid(function () { i++; });
-    validate(input)
-      .is(f)
-      .is(f)
-      .validate();
-    assert(1 === i);
-  });
-});
-
-describe('#is', function () {
-  it('should take a function', function () {
-    var noop = function(){};
-    var input = document.createElement('input');
-    var validator = validate(input).is(noop);
-    assert(noop === validator.rules[0].fn);
-  });
-
-  it('should call the function with a value and a done fn', function (done) {
-    var input = document.createElement('input');
-    input.value = 'val';
-    validate(input).is(function (value, finish) {
-      assert('val' === value);
-      assert('function' === typeof finish);
-      done();
-    }).validate();
-  });
-
-  it('should take a message', function () {
-    var input = document.createElement('input');
-    var validator = validate(input).is(function(){}, 'msg');
-    assert('msg' === validator.rules[0].msg);
-  });
-
-  it('should take shorthands', function () {
-    var noop = function(){};
-    var input = document.createElement('input');
-    validate.validator('test', function (input) {
-      assert(1 === input);
-      return noop;
-    });
-    var validator = validate(input).is('test', 1, 'msg');
-    assert(noop === validator.rules[0].fn);
-    assert('msg' === validator.rules[0].msg);
-  });
-});
-
-describe('#on', function () {
-  it('should validate on blur', function (done) {
-    var input = document.createElement('input');
-    validate(input).on('blur').is(function (val, finish) {
+  it('should finish false when invalid', function (done) {
+    var validator = validate(form);
+    validator.field('email').is('email');
+    validator.validate(function (err, res) {
+      assert(false === res);
       done();
     });
-    document.body.appendChild(input);
-    input.focus();
-    input.blur();
-    document.body.removeChild(input);
+  });
+
+  it('should finish true when valid', function (done) {
+    input.value = 'achilles@olymp.us';
+    var validator = validate(form);
+    validator.field('email').is('email');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 

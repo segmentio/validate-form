@@ -1,8 +1,8 @@
 {
   "name": "validate",
   "repo": "segmentio/validate",
-  "description": "Validate a DOM element.",
-  "version": "0.1.0",
+  "description": "Validate a form.",
+  "version": "0.2.0",
   "license": "MIT",
   "keywords": ["validate", "validator", "form", "input", "required", "regexp", "email", "url"],
   "dependencies": {
@@ -12,14 +12,17 @@
     "component/event": "*",
     "component/type": "*",
     "component/value": "*",
+    "nami-doc/contains": "*",
     "segmentio/is-email": "*",
     "visionmedia/batch": "*"
   },
   "development": {
-    "component/assert": "*"
+    "component/assert": "*",
+    "component/domify": "*"
   },
   "scripts": [
     "lib/adapter.js",
+    "lib/field.js",
     "lib/index.js",
     "lib/validators.js"
   ],

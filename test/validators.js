@@ -1,89 +1,129 @@
 describe('validators', function () {
 
 var assert = require('assert')
+  , domify = require('domify')
   , validate = require('validate');
+
+var form = domify('<form action="#submit"><input name="a"></form>')
+  , input = form.querySelector('input');
 
 describe('required', function () {
   it('should be invalid with an empty value', function (done) {
-    var input = document.createElement('input');
-    validate.invalid(function () { done(); });
-    validate(input).is('required').validate();
+    input.value = '';
+    var validator = validate(form);
+    validator.field('a').is('required');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
   });
 
   it('should be valid with a non-empty value', function (done) {
-    var input = document.createElement('input');
     input.value = 'a';
-    validate.valid(function () { done(); });
-    validate(input).is('required').validate();
+    var validator = validate(form);
+    validator.field('a').is('required');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 
 describe('regexp', function () {
   it('should be invalidated against a regexp', function (done) {
-    var input = document.createElement('input');
-    validate.invalid(function () { done(); });
-    validate(input).is(/a/).validate();
+    input.value = '';
+    var validator = validate(form);
+    validator.field('a').is(/a/i);
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
   });
 
   it('should be validated against a regexp', function (done) {
-    var input = document.createElement('input');
     input.value = 'A';
-    validate.valid(function () { done(); });
-    validate(input).is(/a/i).validate();
+    var validator = validate(form);
+    validator.field('a').is(/a/i);
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 
   it('should accept strings', function (done) {
-    var input = document.createElement('input');
     input.value = 'a';
-    validate.valid(function () { done(); });
-    validate(input).is('regexp', 'a').validate();
+    var validator = validate(form);
+    validator.field('a').is('regexp', 'a');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 
 describe('email', function () {
   it('should be invalid without an email address', function (done) {
-    var input = document.createElement('input');
-    validate.invalid(function () { done(); });
-    validate(input).is('email').validate();
+    input.value = '';
+    var validator = validate(form);
+    validator.field('a').is('email');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
   });
 
   it('should be valid with an email address', function (done) {
-    var input = document.createElement('input');
-    input.value = 'achilles@example.com';
-    validate.valid(function () { done(); });
-    validate(input).is('email').validate();
+    input.value = 'achilles@olymp.us';
+    var validator = validate(form);
+    validator.field('a').is('email');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 
 describe('minimum', function () {
   it('should be invalid without enough chars', function (done) {
-    var input = document.createElement('input');
     input.value = 'four';
-    validate.invalid(function () { done(); });
-    validate(input).is('minimum', 5).validate();
+    var validator = validate(form);
+    validator.field('a').is('minimum', 5);
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
   });
 
   it('should be valid with enough chars', function (done) {
-    var input = document.createElement('input');
     input.value = 'four';
-    validate.valid(function () { done(); });
-    validate(input).is('minimum', 3).validate();
+    var validator = validate(form);
+    validator.field('a').is('minimum', 3);
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 
 describe('maximum', function () {
   it('should be invalid without enough chars', function (done) {
-    var input = document.createElement('input');
     input.value = 'four';
-    validate.invalid(function () { done(); });
-    validate(input).is('maximum', 3).validate();
+    var validator = validate(form);
+    validator.field('a').is('maximum', 3);
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
   });
 
   it('should be valid with enough chars', function (done) {
-    var input = document.createElement('input');
     input.value = 'four';
-    validate.valid(function () { done(); });
-    validate(input).is('maximum', 5).validate();
+    var validator = validate(form);
+    validator.field('a').is('maximum', 5);
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
   });
 });
 
