@@ -12,6 +12,7 @@
     "component/event": "*",
     "component/type": "*",
     "component/value": "*",
+    "ianstormtaylor/next-sibling": "*",
     "nami-doc/contains": "*",
     "segmentio/is-email": "*",
     "visionmedia/batch": "*"
