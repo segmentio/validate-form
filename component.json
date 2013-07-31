@@ -12,6 +12,7 @@
     "component/event": "*",
     "component/type": "*",
     "component/value": "*",
+    "component/trim": "*",
     "nami-doc/contains": "*",
     "segmentio/is-email": "*",
     "visionmedia/batch": "*"
