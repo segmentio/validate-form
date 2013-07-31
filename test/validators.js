@@ -18,6 +18,16 @@ describe('required', function () {
     });
   });
 
+  it('should trim values', function(done){
+    input.value = '  ';
+    var validator = validate(form);
+    validator.field('a').is('required');
+    validator.validate(function(err, res){
+      assert(false == res);
+      done();
+    })
+  })
+
   it('should be valid with a non-empty value', function (done) {
     input.value = 'a';
     var validator = validate(form);

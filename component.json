@@ -10,6 +10,7 @@
     "component/domify": "*",
     "component/each": "*",
     "component/event": "*",
+    "component/trim": "*",
     "component/type": "*",
     "component/value": "*",
     "ianstormtaylor/next-sibling": "*",
