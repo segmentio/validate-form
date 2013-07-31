@@ -16,7 +16,9 @@
     "ianstormtaylor/next-sibling": "*",
     "nami-doc/contains": "*",
     "segmentio/is-email": "*",
-    "visionmedia/batch": "*"
+    "visionmedia/batch": "*",
+    "yields/prevent": "*",
+    "yields/stop": "*"
   },
   "development": {
     "component/assert": "*",
