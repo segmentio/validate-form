@@ -93,6 +93,28 @@ describe('email', function () {
   });
 });
 
+describe('url', function () {
+  it('should be invalid without a URL', function (done) {
+    input.value = '';
+    var validator = validate(form);
+    validator.field('a').is('url');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with a URL', function (done) {
+    input.value = 'http://google.com';
+    var validator = validate(form);
+    validator.field('a').is('url');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+});
+
 describe('minimum', function () {
   it('should be invalid without enough chars', function (done) {
     input.value = 'four';
