@@ -115,6 +115,38 @@ describe('url', function () {
   });
 });
 
+describe('color', function () {
+  it('should be invalid without a hex color', function (done) {
+    input.value = '#92zz39';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with a 3 digit hex color', function (done) {
+    input.value = '#9F0';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+
+  it('should be valid with a 6 digit hex color', function (done) {
+    input.value = '#39FA93';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+});
+
 describe('minimum', function () {
   it('should be invalid without enough chars', function (done) {
     input.value = 'four';
