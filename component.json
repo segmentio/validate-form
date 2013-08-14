@@ -2,7 +2,7 @@
   "name": "validate",
   "repo": "segmentio/validate",
   "description": "Validate a form.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "keywords": ["validate", "validator", "form", "input", "required", "regexp", "email", "url"],
   "dependencies": {

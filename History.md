@@ -1,3 +1,7 @@
+0.2.2 - August 13, 2013
+-----------------------
+* change `invalid` and `valid` to accept view methods
+
 0.2.1 - August 13, 2013
 -----------------------
 * added `name` to adapter
