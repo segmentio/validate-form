@@ -1,3 +1,7 @@
+0.2.1 - August 13, 2013
+-----------------------
+* added `name` to adapter
+
 0.2.0 - July 30, 2013
 ---------------------
 * change api to take `form`

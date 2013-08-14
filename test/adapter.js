@@ -4,9 +4,14 @@ var assert = require('assert')
   , validate = require('validate');
 
 describe('.value', function () {
-  it('should return the correct value', function () {
+  it('should return the correct value for an element', function () {
     var input = document.createElement('input');
     input.value = 'a';
+    assert('a' === validate.adapter.value(input));
+  });
+
+  it('should return the correct value for a view', function () {
+    var input = { value: function(){ return 'a'; }};
     assert('a' === validate.adapter.value(input));
   });
 
@@ -15,6 +20,19 @@ describe('.value', function () {
     validate.value(function () { done(); });
     validate.adapter.value();
     validate.value(old);
+  });
+});
+
+describe('.name', function () {
+  it('should return the correct name for an element', function () {
+    var input = document.createElement('input');
+    input.name = 'a';
+    assert('a' === validate.adapter.name(input));
+  });
+
+  it('should return the correct name for a view', function () {
+    var input = { name: function(){ return 'a'; }};
+    assert('a' === validate.adapter.name(input));
   });
 });
 
