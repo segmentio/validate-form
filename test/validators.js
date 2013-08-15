@@ -147,6 +147,28 @@ describe('color', function () {
   });
 });
 
+describe('number', function () {
+  it('should be invalid without a number', function (done) {
+    var field = { value: function () { return '1'; }};
+    var validator = validate(form);
+    validator.field(field).is('number');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with a number', function (done) {
+    var field = { value: function () { return 1; }};
+    var validator = validate(form);
+    validator.field(field).is('number');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+});
+
 describe('minimum', function () {
   it('should be invalid without enough chars', function (done) {
     input.value = 'four';

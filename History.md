@@ -1,3 +1,7 @@
+0.2.3 - August 15, 2013
+-----------------------
+* added `number` validator
+
 0.2.2 - August 13, 2013
 -----------------------
 * change `invalid` and `valid` to accept view methods
