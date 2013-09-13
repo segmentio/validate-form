@@ -1,6 +1,6 @@
 # validate
 
-  Validate a DOM element, like a text input, against a set of rules. _Still a little in flux, feedback welcome..._
+  Validate a form element against a set of rules. _Still a little in flux, feedback welcome..._
 
 ## Installation
 
