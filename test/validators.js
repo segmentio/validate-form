@@ -23,10 +23,10 @@ describe('required', function () {
     var validator = validate(form);
     validator.field('a').is('required');
     validator.validate(function(err, res){
-      assert(false == res);
+      assert(false === res);
       done();
-    })
-  })
+    });
+  });
 
   it('should be valid with a non-empty value', function (done) {
     input.value = 'a';
@@ -41,7 +41,7 @@ describe('required', function () {
 
 describe('regexp', function () {
   it('should be invalidated against a regexp', function (done) {
-    input.value = '';
+    input.value = 'w';
     var validator = validate(form);
     validator.field('a').is(/a/i);
     validator.validate(function (err, res) {
@@ -73,7 +73,7 @@ describe('regexp', function () {
 
 describe('email', function () {
   it('should be invalid without an email address', function (done) {
-    input.value = '';
+    input.value = 'a';
     var validator = validate(form);
     validator.field('a').is('email');
     validator.validate(function (err, res) {
@@ -95,7 +95,7 @@ describe('email', function () {
 
 describe('url', function () {
   it('should be invalid without a URL', function (done) {
-    input.value = '';
+    input.value = 'a';
     var validator = validate(form);
     validator.field('a').is('url');
     validator.validate(function (err, res) {
