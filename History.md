@@ -1,3 +1,7 @@
+0.3.1 - September 27, 2013
+--------------------------
+* added support for RGB and HSL colors
+
 0.3.0 - September 13, 2013
 --------------------------
 * made fields optional by default

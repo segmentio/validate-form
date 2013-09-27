@@ -2,7 +2,7 @@
   "name": "validate",
   "repo": "segmentio/validate",
   "description": "Validate a form.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "license": "MIT",
   "keywords": ["validate", "validator", "form", "input", "required", "regexp", "email", "url"],
   "dependencies": {
@@ -16,6 +16,9 @@
     "ianstormtaylor/next-sibling": "*",
     "nami-doc/contains": "*",
     "segmentio/is-email": "*",
+    "segmentio/is-hex-color": "*",
+    "segmentio/is-hsl-color": "*",
+    "segmentio/is-rgb-color": "*",
     "segmentio/is-url": "*",
     "visionmedia/batch": "*",
     "yields/prevent": "*",

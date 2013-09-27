@@ -115,11 +115,11 @@ describe('url', function () {
   });
 });
 
-describe('color', function () {
+describe('hex', function () {
   it('should be invalid without a hex color', function (done) {
     input.value = '#92zz39';
     var validator = validate(form);
-    validator.field('a').is('color');
+    validator.field('a').is('hex');
     validator.validate(function (err, res) {
       assert(false === res);
       done();
@@ -129,7 +129,7 @@ describe('color', function () {
   it('should be valid with a 3 digit hex color', function (done) {
     input.value = '#9F0';
     var validator = validate(form);
-    validator.field('a').is('color');
+    validator.field('a').is('hex');
     validator.validate(function (err, res) {
       assert(true === res);
       done();
@@ -138,6 +138,100 @@ describe('color', function () {
 
   it('should be valid with a 6 digit hex color', function (done) {
     input.value = '#39FA93';
+    var validator = validate(form);
+    validator.field('a').is('hex');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+});
+
+describe('rgb', function () {
+  it('should be invalid without an RGB color', function (done) {
+    input.value = 'rgb(255,255)';
+    var validator = validate(form);
+    validator.field('a').is('rgb');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with an RGB color', function (done) {
+    input.value = 'rgb(255,255,255)';
+    var validator = validate(form);
+    validator.field('a').is('rgb');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+
+  it('should have an rgba alias', function () {
+    assert(validate.validators.rgba == validate.validators.rgb);
+  });
+});
+
+describe('hsl', function () {
+  it('should be invalid without an RGB color', function (done) {
+    input.value = 'hsl(255,3%)';
+    var validator = validate(form);
+    validator.field('a').is('hsl');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with an RGB color', function (done) {
+    input.value = 'hsl(255,100%,100%)';
+    var validator = validate(form);
+    validator.field('a').is('hsl');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+
+  it('should have an rgba alias', function () {
+    assert(validate.validators.hsla == validate.validators.hsl);
+  });
+});
+
+describe('color', function () {
+  it('should be invalid without a color', function (done) {
+    input.value = 'z39';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(false === res);
+      done();
+    });
+  });
+
+  it('should be valid with a hex color', function (done) {
+    input.value = '#9F0';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+
+  it('should be valid with an RGB color', function (done) {
+    input.value = 'rgb(34,30,123)';
+    var validator = validate(form);
+    validator.field('a').is('color');
+    validator.validate(function (err, res) {
+      assert(true === res);
+      done();
+    });
+  });
+
+  it('should be valid with an HSL color', function (done) {
+    input.value = 'hsl(34,40%,39%)';
     var validator = validate(form);
     validator.field('a').is('color');
     validator.validate(function (err, res) {
