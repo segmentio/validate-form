@@ -1,7 +1,8 @@
+
 describe('field', function () {
 
 var assert = require('assert')
-  , validate = require('validate')
+  , validate = require('validate-form')
   , field = validate.field;
 
 beforeEach(function () {
@@ -26,36 +27,55 @@ describe('#valid', function () {
 });
 
 describe('#validate', function () {
+  it('should skip empty, non-required fields', function (done) {
+    this.field
+      .is(function () { return false; })
+      .validate(function (valid) {
+        assert(valid);
+        done();
+      });
+  });
+
   it('should call the invalid adapter', function (done) {
+    this.input.value = 'val';
     validate.invalid(function () { done(); });
-    this.field.is(function (val, finish) {
-      finish(null, false);
-    }).validate();
+    this.field
+      .is(function (value) { return false; })
+      .validate();
   });
 
   it('should call the valid adapter', function (done) {
+    this.input.value = 'val';
     validate.valid(function () { done(); });
-    this.field.is(function (val, finish) {
-      finish(null, true);
-    }).validate();
+    this.field
+      .is(function (value) { return true; })
+      .validate();
   });
 
   it('should break on first invalid', function () {
     var i = 0;
-    var f = function (val, done) { done(false); };
+    var f = function (val) { return false; };
     validate.invalid(function () { i++; });
-    this.field.is(f).is(f).validate();
-    assert(1 === i);
+    this.field
+      .is('required')
+      .is(f)
+      .is(f)
+      .validate(function (valid) {
+        assert(1 === i);
+      });
   });
 });
 
 describe('#is', function () {
-  it('should take a function', function () {
-    this.field.is(this.noop);
-    assert(this.noop === this.field.rules[0].fn);
+  it('should call sync validators with a value', function (done) {
+    this.input.value = 'val';
+    this.field.is(function (value) {
+      assert('val' === value);
+      done();
+    }).validate();
   });
 
-  it('should call the function with a value and a done fn', function (done) {
+  it('should call async validators with a value and a done fn', function (done) {
     this.input.value = 'val';
     this.field.is(function (value, finish) {
       assert('val' === value);
@@ -64,25 +84,34 @@ describe('#is', function () {
     }).validate();
   });
 
-  it('should take a message', function () {
-    this.field.is(this.noop, 'msg');
-    assert('msg' === this.field.rules[0].msg);
-  });
-
-  it('should take shorthands', function () {
-    var noop = this.noop;
-    validate.validator('test', function (requirement) {
-      assert(1 === requirement);
-      return noop;
-    });
-    this.field.is('test', 1, 'msg');
-    assert(noop === this.field.rules[0].fn);
-    assert('msg' === this.field.rules[0].msg);
-  });
-
   it('should set a required flag', function () {
     this.field.is('required');
     assert(this.field._required);
+  });
+
+  it('should take shorthands', function (done) {
+    validate.validator('shorthand', function (val) {
+      done();
+    });
+    this.field
+      .is('required')
+      .is('shorthand')
+      .validate();
+  });
+
+  it('should allow shorthands that take settings', function (done) {
+    this.input.value = 'val';
+    validate.validator('shorthand', function (setting) {
+      return function (val) {
+        return val == setting;
+      };
+    });
+    this.field
+      .is('shorthand', 'val', 'message')
+      .validate(function (valid) {
+        assert(valid);
+        done();
+      });
   });
 });
 

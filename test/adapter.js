@@ -1,7 +1,8 @@
+
 describe('adapter', function () {
 
 var assert = require('assert')
-  , validate = require('validate');
+  , validate = require('validate-form');
 
 describe('.value', function () {
   it('should return the elements value', function () {

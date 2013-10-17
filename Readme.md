@@ -1,15 +1,16 @@
-# validate
+
+# validate-form
 
   Validate a form element against a set of rules. _Still a little in flux, feedback welcome..._
 
 ## Installation
 
-    $ component install segmentio/validate
+    $ component install segmentio/validate-form
 
 ## Example
   
 ```js
-var validate = require('validate')
+var validate = require('validate-form')
   , form = document.getElementById('#form');
 
 validate(form)

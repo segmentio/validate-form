@@ -1,14 +1,14 @@
 
-build: components
+build: components $(shell find lib)
 	@component build --dev
 
 components: component.json
 	@component install --dev
 
 clean:
-	rm -fr build components
+	@rm -fr build components
 
 test: build
-	open test/index.html
+	@open test/index.html
 
-.PHONY: build clean test
+.PHONY: clean test

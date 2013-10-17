@@ -1,8 +1,9 @@
-describe('validate', function () {
+
+describe('validate-form', function () {
 
 var assert = require('assert')
   , domify = require('domify')
-  , validate = require('validate')
+  , validate = require('validate-form')
   , Field = validate.Field;
 
 beforeEach(function () {
@@ -33,18 +34,18 @@ describe('#field', function () {
 });
 
 describe('#validate', function () {
-  it('should finish false when invalid', function (done) {
+  it('should be false when invalid', function (done) {
     this.validator.field('email').is('required');
-    this.validator.validate(function (err, valid) {
+    this.validator.validate(function (valid) {
       assert(false === valid);
       done();
     });
   });
 
-  it('should finish true when valid', function (done) {
+  it('should be true when valid', function (done) {
     this.input.value = 'achilles@olymp.us';
     this.validator.field('email').is('required');
-    this.validator.validate(function (err, valid) {
+    this.validator.validate(function (valid) {
       assert(true === valid);
       done();
     });

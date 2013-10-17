@@ -1,3 +1,8 @@
+0.4.0 - October 16, 2013
+------------------------
+* change name to `validate-form`
+* add `segmentio/validator` dependency
+
 0.3.1 - September 27, 2013
 --------------------------
 * added support for RGB and HSL colors
