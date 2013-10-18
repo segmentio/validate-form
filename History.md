@@ -1,4 +1,4 @@
-0.4.0 - October 16, 2013
+0.4.0 - October 17, 2013
 ------------------------
 * change name to `validate-form`
 * add `segmentio/validator` dependency
