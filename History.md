@@ -1,3 +1,7 @@
+0.5.1 - October 18, 2013
+------------------------
+* add `valid` class to default adapter
+
 0.5.0 - October 17, 2013
 ------------------------
 * don't submit until async validators come back

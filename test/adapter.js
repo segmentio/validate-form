@@ -46,9 +46,8 @@ describe('adapter', function () {
   describe('.valid', function () {
     it('should mark the input as valid', function () {
       var input = document.createElement('input');
-      adapter.invalid(input);
       adapter.valid(input);
-      assert('' === input.className);
+      assert('valid' === input.className);
     });
 
     it('should remove a message', function () {
