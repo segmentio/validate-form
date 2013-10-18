@@ -1,3 +1,7 @@
+0.5.3 - October 18, 2013
+------------------------
+* use `stopImmediatePropagation`, sorry IE
+
 0.5.2 - October 18, 2013
 ------------------------
 * add `clear` adapter
