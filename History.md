@@ -1,3 +1,9 @@
+0.5.2 - October 18, 2013
+------------------------
+* add `clear` adapter
+* add `el` adapter
+* cleanup existing adapters
+
 0.5.1 - October 18, 2013
 ------------------------
 * add `valid` class to default adapter

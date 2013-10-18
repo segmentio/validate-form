@@ -36,6 +36,13 @@ describe('validate-form', function () {
     });
   });
 
+  describe('#el', function () {
+    it('should set the view-specific adapter', function (done) {
+      this.validator.el(done);
+      this.validator.adapter.el();
+    });
+  });
+
   describe('#value', function () {
     it('should set the view-specific adapter', function (done) {
       this.validator.value(done);
@@ -54,6 +61,13 @@ describe('validate-form', function () {
     it('should set the view-specific adapter', function (done) {
       this.validator.valid(done);
       this.validator.adapter.valid();
+    });
+  });
+
+  describe('#clear', function () {
+    it('should set the view-specific adapter', function (done) {
+      this.validator.clear(done);
+      this.validator.adapter.clear();
     });
   });
 
