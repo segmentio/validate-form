@@ -1,4 +1,3 @@
-
 # validate-form
 
   Easily validate a form element against a set of rules.
@@ -32,9 +31,9 @@ validate(form)
   
   Create a new validator for a given form `el`.
 
-### #field(el)
+### #field(name)
   
-  Add a field to the validator.
+  Add a field to the validator by its `name` attribute. You can also just pass the input `el` directly.
 
 ### #is(fn, [message])
   
