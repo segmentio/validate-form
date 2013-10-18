@@ -6,6 +6,7 @@ describe('field', function () {
 
   beforeEach(function () {
     var form = document.createElement('form');
+    form.action = '#submit';
     var input = this.input = document.createElement('input');
     this.validator = validate(form).field(input);
   });

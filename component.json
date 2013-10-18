@@ -2,7 +2,7 @@
   "name": "validate-form",
   "repo": "segmentio/validate-form",
   "description": "Easily validate a form element against a set of rules.",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "license": "MIT",
   "keywords": [
     "validate",
@@ -23,6 +23,7 @@
     "component/trim": "0.0.1",
     "component/type": "1.0.0",
     "component/value": "1.1.0",
+    "ianstormtaylor/bind": "0.0.2",
     "ianstormtaylor/next-sibling": "0.0.1",
     "segmentio/is-email": "0.1.1",
     "segmentio/is-hex-color": "0.0.1",

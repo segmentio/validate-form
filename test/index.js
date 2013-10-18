@@ -2,6 +2,7 @@
 describe('validate-form', function () {
 
   var assert = require('assert');
+  var submit = require('submit-form');
   var validate = require('validate-form');
 
   beforeEach(function () {
@@ -91,6 +92,22 @@ describe('validate-form', function () {
         assert(true === valid);
         done();
       });
+    });
+
+    it('should wait for remote validators to submit the form', function (done) {
+      this.input.value = 'text';
+      this.form.onsubmit = function (e) {
+        e.preventDefault();
+        done();
+      };
+      this.validator
+        .field('input')
+        .is(function (val, done) {
+          setTimeout(function () {
+            done(true);
+          }, 42);
+        });
+      submit(this.form);
     });
   });
 
