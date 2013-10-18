@@ -47,9 +47,9 @@ validate(form)
   
   Add a validation `regexp` with an optional error `message`.
 
-### #is(string, settings, [message])
+### #is(string, settings..., [message])
 
-  Add a validation function that takes optional `settings` and returns a regular validation function. This would be for things like minimum length, which require a `length` number.
+  Add a validation function that takes optional `settings...` and returns a regular validation function. This would be for things like minimum length, which require a `length` number.
 
 ### #on(event)
 
