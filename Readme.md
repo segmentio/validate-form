@@ -1,7 +1,7 @@
 
 # validate-form
 
-  Validate a form element against a set of rules. _Still a little in flux, feedback welcome..._
+  Easily validate a form element against a set of rules.
 
 ## Installation
 
@@ -10,8 +10,8 @@
 ## Example
   
 ```js
-var validate = require('validate-form')
-  , form = document.getElementById('#form');
+var validate = require('validate-form');
+var form = document.getElementById('#form');
 
 validate(form)
   .field('email')
@@ -21,12 +21,9 @@ validate(form)
     .is('required')
     .is('minimum', 8, 'Minimum 8 characters.')
     .is(/\w+/i, 'Please only use certain characters...')
-    .is(function (value, done) {
-      done(null, value !== 'password');
-    }, 'Come on...')
-  .field('password-again')
-    .is('required')
-    .is('equal', 'password');
+    .is(function (value) {
+      return value != 'password');
+    });
 ```
 
 ## API
@@ -39,40 +36,54 @@ validate(form)
   
   Add a field to the validator.
 
-### #is(rule, [value], [message])
+### #is(fn, [message])
   
-  Add a validation `rule` to the current field (either a function or a shorthand string) with an optional `message` to be displayed when invalid. The `rule` fn should take a `value, done` signature and should call `done(err, valid)`.
+  Add a validation `fn` with an optional error `message`.
 
-  Some validation functions are initialized with a `value` (like minimum length).
+### #is(string, [message])
 
-### #validate()
+  Add a validation function by its shorthand `string` with an optional error `message`.
+
+### #is(regexp, [message])
   
-  Validate the form manually.
+  Add a validation `regexp` with an optional error `message`.
 
-### .value(fn)
-  
-  Set the `value` adapter, for retrieving the value of the element being validated. By default it will use `component/value`.
+### #is(string, settings, [message])
 
-### .invalid(fn)
-  
-  Set the `invalid` adapter, for marking the element as invalid. By default this will add an `invalid` class to the element and append a message `label` element.
+  Add a validation function that takes optional `settings` and returns a regular validation function. This would be for things like minimum length, which require a `length` number.
 
-### .valid(fn)
+### #on(event)
+
+  Trigger the validation on an `event` in addition to `submit`. For example `'blur'`.
+
+### #validate(callback)
   
-  Set the `valid` adapter, for marking the element as valid. By default, this will remove an `invalid` class and any message elements.
+  Validate the form manually and `callback(valid)`.
+
+### #value(fn)
+  
+  Set the value adapter `fn`, for retrieving the value of the element being validated. By default it will use `component/value`.
+
+### #invalid(fn)
+  
+  Set the invalid adapter `fn`, for marking the element as invalid. By default this will add an `invalid` class to the element and append a message `label` element.
+
+### #valid(fn)
+  
+  Set the valid adapter `fn`, for marking the element as valid. By default, this will remove an `invalid` class and any message elements.
 
 ## Shorthands
 
-* `RegExp` - validates against a `RegExp`.
-* `'required'` - requires a non-empty value.
-* `'email'` - requires an email address.
-* `'url'` - requires a URL.
-* `'color'` - requires a hex, RGB or HSL color string.
-* `'hex'` - requires a hex color string.
-* `'rgb'` - requires an RGB color string.
-* `'hsl'` - requires an HSL color string.
-* `'minimum', length`  - requires a minimum `length` of characters. (also `min`)
-* `'maximum', length` - requires a maximum `length` of characters. (also `max`)
+  * `RegExp` - validates against a `RegExp`.
+  * `'required'` - requires a non-empty value.
+  * `'email'` - requires an email address.
+  * `'url'` - requires a URL.
+  * `'color'` - requires a hex, RGB or HSL color string.
+  * `'hex'` - requires a hex color string.
+  * `'rgb'` - requires an RGB color string.
+  * `'hsl'` - requires an HSL color string.
+  * `'minimum', length`  - requires a minimum `length` of characters. (also `min`)
+  * `'maximum', length` - requires a maximum `length` of characters. (also `max`)
 
 ## License
 
