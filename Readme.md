@@ -1,3 +1,4 @@
+
 # validate-form
 
   Easily validate a form element against a set of rules. The rules can be sync or async, and the form submission will wait.

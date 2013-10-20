@@ -1,3 +1,7 @@
+0.5.4 - October 20, 2013
+------------------------
+* fix bug in optional fields
+
 0.5.3 - October 18, 2013
 ------------------------
 * use `stopImmediatePropagation`, sorry IE
