@@ -13,16 +13,16 @@ var validate = require('validate-form');
 var form = document.getElementById('#form');
 
 validate(form)
+  .on('blur')
   .field('email')
-    .is('required')
+    .is('required', 'Please enter your email.')
     .is('email')
   .field('password')
     .is('required')
     .is('minimum', 8, 'Minimum 8 characters.')
-    .is(/\w+/i, 'Please only use certain characters...')
     .is(function (value) {
       return value != 'password');
-    });
+    }, 'Come on now...');
 ```
 
 ## API
