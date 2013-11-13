@@ -1,3 +1,8 @@
+0.6.0 - November 12, 2013
+-------------------------
+* update `segmentio/validator` to `0.0.5`
+* fix to make validate callbacks optional
+
 0.5.4 - October 20, 2013
 ------------------------
 * fix bug in optional fields
