@@ -1,3 +1,7 @@
+0.7.0 - November 14, 2013
+-------------------------
+* fix to not validate inputs on blur if they're empty
+
 0.6.0 - November 12, 2013
 -------------------------
 * update `segmentio/validator` to `0.0.5`
