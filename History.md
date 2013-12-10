@@ -1,3 +1,7 @@
+0.8.1 - December 9, 2013
+------------------------
+* fix submit validator to be async
+
 0.8.0 - December 9, 2013
 ------------------------
 * upgrade `component/classes` to `1.1.4`
