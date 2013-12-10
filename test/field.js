@@ -24,7 +24,8 @@ describe('field', function () {
     it('should skip empty, non-required fields', function (done) {
       validator
         .is(function () { return false; }, 'message')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(valid);
           done();
         });
@@ -104,7 +105,8 @@ describe('field', function () {
       });
       validator
         .is('shorthand', 'val', 'message')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(valid);
           done();
         });

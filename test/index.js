@@ -93,7 +93,8 @@ describe('validate-form', function () {
   describe('#validate', function () {
     it('should be false when invalid', function (done) {
       this.validator.field('input').is('required');
-      this.validator.validate(function (valid) {
+      this.validator.validate(function (err, valid) {
+        if (err) return done(err);
         assert(false === valid);
         done();
       });
@@ -102,7 +103,8 @@ describe('validate-form', function () {
     it('should be true when valid', function (done) {
       this.input.value = 'text';
       this.validator.field('input').is('required');
-      this.validator.validate(function (valid) {
+      this.validator.validate(function (err, valid) {
+        if (err) return done(err);
         assert(true === valid);
         done();
       });

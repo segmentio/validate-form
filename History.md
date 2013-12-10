@@ -1,3 +1,9 @@
+0.8.0 - December 9, 2013
+------------------------
+* upgrade `component/classes` to `1.1.4`
+* upgrade `component/event` to `0.1.2`
+* upgrade `segmentio/validator` to `0.0.6`
+
 0.7.0 - November 14, 2013
 -------------------------
 * fix to not validate inputs on blur if they're empty

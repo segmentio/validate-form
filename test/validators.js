@@ -19,7 +19,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('required')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -30,7 +31,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('required')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -41,7 +43,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('required')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -54,7 +57,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is(/a/i)
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -65,7 +69,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is(/a/i)
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -76,7 +81,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('regexp', 'a')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -89,7 +95,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('email')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -100,7 +107,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('email')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -113,7 +121,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('url')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -124,7 +133,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('url')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -137,7 +147,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('hex')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -148,7 +159,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('hex')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -159,7 +171,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('hex')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -172,7 +185,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('rgb')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -183,7 +197,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('rgb')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -200,7 +215,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('hsl')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -211,7 +227,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('hsl')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -228,7 +245,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('color')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -239,7 +257,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('color')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -250,7 +269,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('color')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -261,7 +281,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('color')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -274,7 +295,8 @@ describe('validators', function () {
       this.validator
         .field(field)
         .is('number')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -285,7 +307,8 @@ describe('validators', function () {
       this.validator
         .field(field)
         .is('number')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -298,7 +321,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('minimum', 5, '')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -309,7 +333,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('minimum', 3, '')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
@@ -322,7 +347,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('maximum', 3, '')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(false === valid);
           done();
         });
@@ -333,7 +359,8 @@ describe('validators', function () {
       this.validator
         .field('input')
         .is('maximum', 5, '')
-        .validate(function (valid) {
+        .validate(function (err, valid) {
+          if (err) return done(err);
           assert(true === valid);
           done();
         });
