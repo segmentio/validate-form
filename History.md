@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 0.8.1 - December 10, 2013
 -------------------------
 * upgrade `segmentio/validator` to `0.0.9`
+=======
+0.8.1 - December 9, 2013
+------------------------
+* fix submit validator to be async
+>>>>>>> 4e16677... fixing submit validator
 
 0.8.0 - December 9, 2013
 ------------------------
