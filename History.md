@@ -1,3 +1,7 @@
+0.8.1 - December 10, 2013
+-------------------------
+* upgrade `segmentio/validator` to `0.0.9`
+
 0.8.0 - December 9, 2013
 ------------------------
 * upgrade `component/classes` to `1.1.4`
