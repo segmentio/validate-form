@@ -32,8 +32,10 @@
     "segmentio/is-url": "0.1.0",
     "segmentio/submit-form": "0.0.1",
     "segmentio/validator": "0.0.9",
+    "segmentio/extend": "0.0.1",
     "yields/prevent": "0.0.2",
-    "yields/stop": "0.0.2"
+    "yields/stop": "0.0.2",
+    "paulmillr/async-each": "*"
   },
   "development": {
     "component/assert": "*",
