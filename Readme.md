@@ -58,7 +58,11 @@ validate(form)
 
 ### #validate(callback)
   
-  Validate the form manually and `callback(valid)`.
+  Validate the form manually and `callback(err, valid, msg)` as soon as an invalid form is found.
+
+### #validateAll(callback)
+  
+  Validate the form manually and `callback(err, valid, fields)` when the entire forms status is determined.
 
 ### #value(fn)
   
