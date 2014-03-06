@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "component/classes": "1.1.4",
-    "component/clone": "*",
+    "component/clone": "0.2.0",
     "component/domify": "1.1.1",
     "component/each": "0.1.0",
     "component/event": "0.1.2",
