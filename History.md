@@ -1,3 +1,11 @@
+
+0.9.0 - March 14, 2013
+----------------------
+* change `#validator` to be chainable
+* change `required` validator to handle non-strings
+* remove `novalidate` attribute from forms
+* call validators with `Field` as context
+
 0.8.2 - December 10, 2013
 -------------------------
 * upgrade `segmentio/validator` to `0.0.9`
