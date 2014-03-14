@@ -379,4 +379,24 @@ describe('validators', function () {
     });
   });
 
+  describe.skip('equal', function () {
+    it('should fail for different values', function (done) {
+      this.input.value = 'a';
+
+      var other = document.createElement('input');
+      other.value = 'b';
+      other.name = 'input2';
+      this.form.appendChild(other);
+
+      this.validator
+        .field('input')
+        .is('equal', 'input2', '')
+        .validate(function (err, valid) {
+          if (err) return done(err);
+          assert(false === valid);
+          done();
+        });
+    });
+  });
+
 });
