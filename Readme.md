@@ -8,7 +8,7 @@
     $ component install segmentio/validate-form
 
 ## Example
-  
+
 ```js
 var validate = require('validate-form');
 var form = document.getElementById('#form');
@@ -29,15 +29,15 @@ validate(form)
 ## API
 
 ### validate(el)
-  
+
   Create a new validator for a given form `el`.
 
 ### #field(name)
-  
+
   Add a field to the validator by its `name` attribute. You can also just pass the input `el` directly.
 
 ### #is(fn, [message])
-  
+
   Add a validation `fn` with an optional error `message`.
 
 ### #is(string, [message])
@@ -45,7 +45,7 @@ validate(form)
   Add a validation function by its shorthand `string` with an optional error `message`.
 
 ### #is(regexp, [message])
-  
+
   Add a validation `regexp` with an optional error `message`.
 
 ### #is(string, settings..., [message])
@@ -57,19 +57,19 @@ validate(form)
   Trigger the validation on an `event` in addition to `submit`. For example `'blur'`.
 
 ### #validate(callback)
-  
-  Validate the form manually and `callback(valid)`.
+
+  Validate the form manually and `callback(err, valid, msg)`.
 
 ### #value(fn)
-  
+
   Set the value adapter `fn`, for retrieving the value of the element being validated. By default it will use `component/value`.
 
 ### #invalid(fn)
-  
+
   Set the invalid adapter `fn`, for marking the element as invalid. By default this will add an `invalid` class to the element and append a message `label` element.
 
 ### #valid(fn)
-  
+
   Set the valid adapter `fn`, for marking the element as valid. By default, this will remove an `invalid` class and any message elements.
 
 ## Shorthands
@@ -84,6 +84,7 @@ validate(form)
   * `'hsl'` - requires an HSL color string.
   * `'minimum', length`  - requires a minimum `length` of characters. (also `min`)
   * `'maximum', length` - requires a maximum `length` of characters. (also `max`)
+  * `'equal', other` - requires that this field has the same value as `other` field
 
 ## License
 

@@ -3,7 +3,7 @@
 ----------------------
 * change `#validator` to be chainable
 * change `required` validator to handle non-strings
-* remove `novalidate` attribute from forms
+* add `novalidate` attribute to forms upon bind
 * call validators with `Field` as context
 
 0.8.2 - December 10, 2013
