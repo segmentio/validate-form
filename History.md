@@ -1,4 +1,8 @@
 
+0.9.1 - March 17, 2013
+----------------------
+* add `equal` validator
+
 0.9.0 - March 14, 2013
 ----------------------
 * change `#validator` to be chainable
