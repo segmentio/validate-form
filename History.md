@@ -1,3 +1,7 @@
+0.8.3 - September 30, 2014
+-------------------------
+* fix for regex validator
+
 0.8.2 - December 10, 2013
 -------------------------
 * upgrade `segmentio/validator` to `0.0.9`

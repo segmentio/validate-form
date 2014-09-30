@@ -2,7 +2,7 @@
   "name": "validate-form",
   "repo": "segmentio/validate-form",
   "description": "Easily validate a form element against a set of rules.",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "license": "MIT",
   "keywords": [
     "validate",
