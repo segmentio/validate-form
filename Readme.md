@@ -78,6 +78,7 @@ validate(form)
   * `'required'` - requires a non-empty value.
   * `'email'` - requires an email address.
   * `'url'` - requires a URL.
+  * `'domain'` - requires a domain name.
   * `'color'` - requires a hex, RGB or HSL color string.
   * `'hex'` - requires a hex color string.
   * `'rgb'` - requires an RGB color string.
