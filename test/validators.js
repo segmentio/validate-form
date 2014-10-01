@@ -141,6 +141,32 @@ describe('validators', function () {
     });
   });
 
+  describe('domain', function () {
+    it('should be invalid without a well formed domain name', function (done) {
+      this.input.value = 'a';
+      this.validator
+        .field('input')
+        .is('domain')
+        .validate(function (err, valid) {
+          if (err) return done(err);
+          assert(false === valid);
+          done();
+        });
+    });
+
+    it('should be valid with a well formed domain name', function (done) {
+      this.input.value = 'google.com.au';
+      this.validator
+        .field('input')
+        .is('domain')
+        .validate(function (err, valid) {
+          if (err) return done(err);
+          assert(true === valid);
+          done();
+        });
+    });
+  });
+
   describe('hex', function () {
     it('should be invalid without a hex color', function (done) {
       this.input.value = '#92zz39';
