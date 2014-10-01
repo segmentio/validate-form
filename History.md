@@ -1,4 +1,8 @@
 
+0.9.2 - October 1, 2014
+-----------------------
+* add support for `domain` validation 
+
 0.9.1 - March 17, 2013
 ----------------------
 * add `equal` validator
